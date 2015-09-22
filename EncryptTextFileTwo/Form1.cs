@@ -59,7 +59,7 @@ namespace EncryptTextFileTwo
                 int intLent = strPath.LastIndexOf("\\") + 1;
                 int intLong = strPath.Length;
                 string strName = strPath.Substring(intLent, intLong - intLent);//要加密的文件名称
-                string strLinPath = "C:\\" + strName;//临时加密文件路径，所以被加密的文件不可以放在C盘的根目录下
+                string strLinPath = "C:\\" + strName;
                 FileStream fsOut = File.Open(strLinPath, FileMode.Create, FileAccess.Write);
                 //开始加密
                 RC2CryptoServiceProvider desc = new RC2CryptoServiceProvider();//des进行加
@@ -72,9 +72,9 @@ namespace EncryptTextFileTwo
                 fsPic.Close();
                 fsText.Close();
                 fsOut.Close();
-                File.Delete(textBox1.Text.TrimEnd());//册除原文件
+                File.Delete(textBox1.Text.TrimEnd());//删除原文件
                 File.Copy(strLinPath, textBox1.Text);//复制加密文件
-                File.Delete(strLinPath);//册除临时文件
+                File.Delete(strLinPath);//删除临时文件
                 MessageBox.Show("Successful!");
                 pictureBox1.ImageLocation = null;
                 textBox1.Text = "";
@@ -121,9 +121,9 @@ namespace EncryptTextFileTwo
                 fsPic.Close();
                 csDecrypt.Flush();
 
-                File.Delete(textBox1.Text.TrimEnd());//册除原文件
+                File.Delete(textBox1.Text.TrimEnd());//删除原文件
                 File.Copy(strLinPath, textBox1.Text);//复制加密文件
-                File.Delete(strLinPath);//册除临时文件
+                File.Delete(strLinPath);//删除临时文件
                 MessageBox.Show("Successful!");
                 pictureBox1.ImageLocation = null;
                 textBox1.Text = "";
